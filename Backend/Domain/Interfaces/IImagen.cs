@@ -8,6 +8,7 @@ namespace Domain.Interfaces
 {
     public interface IImagen : IGenericRepository<Imagen>
     {
-        
+        Task<IEnumerable<Imagen>> GetAllImagenesAsync();
+        Task<Imagen> GetImagenByIdAsync(int id);
     }
 }
