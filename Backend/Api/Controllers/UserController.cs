@@ -92,6 +92,20 @@ public class UserController : BaseController
             return BadRequest(new { message = ex.Message });
         }
     }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(int id){ // Arreglar el elimindao en FK
+        var con = await _unitOfWork.Users.GetByIdAsync(id);
+        if(con == null){
+            return NotFound();
+        }
+        _unitOfWork.Users.Remove(con);
+        await _unitOfWork.SaveAsync();
+        return NoContent();
+    }
+
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshToken()
     {
