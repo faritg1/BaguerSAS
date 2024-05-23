@@ -11,8 +11,8 @@ using Persistence.Data;
 namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(BaguerContext))]
-    [Migration("20240523040222_Tel12")]
-    partial class Tel12
+    [Migration("20240523061926_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace Persistence.Data.Migrations
                         .HasColumnType("varchar(30)");
 
                     b.Property<int?>("Telefono")
-                        .HasColumnType("int(12)");
+                        .HasColumnType("int(20)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int(11)");
@@ -194,7 +194,7 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Imagen", b =>
                 {
-                    b.HasOne("Domain.Entities.User", "Empleado")
+                    b.HasOne("Domain.Entities.Empleado", "Empleado")
                         .WithMany("Imagens")
                         .HasForeignKey("EmpleadoId")
                         .IsRequired()
@@ -233,6 +233,11 @@ namespace Persistence.Data.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Empleado", b =>
+                {
+                    b.Navigation("Imagens");
+                });
+
             modelBuilder.Entity("Domain.Entities.Rol", b =>
                 {
                     b.Navigation("UsersRols");
@@ -241,8 +246,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Navigation("Empleados");
-
-                    b.Navigation("Imagens");
 
                     b.Navigation("RefreshTokens");
 

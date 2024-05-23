@@ -191,7 +191,7 @@ namespace Persistence.Data.Migrations
 
             modelBuilder.Entity("Domain.Entities.Imagen", b =>
                 {
-                    b.HasOne("Domain.Entities.User", "Empleado")
+                    b.HasOne("Domain.Entities.Empleado", "Empleado")
                         .WithMany("Imagens")
                         .HasForeignKey("EmpleadoId")
                         .IsRequired()
@@ -230,6 +230,11 @@ namespace Persistence.Data.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Empleado", b =>
+                {
+                    b.Navigation("Imagens");
+                });
+
             modelBuilder.Entity("Domain.Entities.Rol", b =>
                 {
                     b.Navigation("UsersRols");
@@ -238,8 +243,6 @@ namespace Persistence.Data.Migrations
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Navigation("Empleados");
-
-                    b.Navigation("Imagens");
 
                     b.Navigation("RefreshTokens");
 

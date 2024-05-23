@@ -30,6 +30,7 @@ public static class AppServiceExtension
     {
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IImgService, ImgService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     } 
 

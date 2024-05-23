@@ -14,5 +14,5 @@ public partial class Imagen : BaseEntity
 
     public int EmpleadoId { get; set; }
 
-    public virtual User Empleado { get; set; }
+    public virtual Empleado Empleado { get; set; }
 }

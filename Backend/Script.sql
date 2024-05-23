@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `BaguerdbExample`;
-USE `BaguerdbExample`;
+CREATE DATABASE IF NOT EXISTS `db`;
+USE `db`;
 
 /* 
 Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `Imagen` (
     Img VARCHAR(255) NULL,
     EmpleadoId INT(11) NOT NULL,
     CONSTRAINT PkImg PRIMARY KEY (Id),
-    CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES User(Id) 
+    CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES Empleado(Id) 
 );
 
 /* 

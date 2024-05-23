@@ -23,4 +23,5 @@ public partial class Empleado : BaseEntity
     public int UserId { get; set; }
 
     public virtual User User { get; set; }
+    public virtual ICollection<Imagen> Imagens { get; set; } = new List<Imagen>();
 }

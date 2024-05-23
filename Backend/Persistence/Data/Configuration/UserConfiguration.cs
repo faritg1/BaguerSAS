@@ -23,7 +23,7 @@ namespace Persistence.Data.Configuration
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(50);
-                
+            
             entity
             .HasMany(p => p.Rols)
             .WithMany(r => r.Users)
