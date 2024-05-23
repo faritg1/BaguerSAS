@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `BaguerdbExample`;
 USE `BaguerdbExample`;
 
+/* Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. */
 CREATE TABLE IF NOT EXISTS `User` (
     Id INT(11) NOT NULL AUTO_INCREMENT,
     Username VARCHAR(50) NOT NULL,
@@ -13,9 +14,6 @@ CREATE TABLE IF NOT EXISTS `Empleado` (
     Nombre VARCHAR(20) NOT NULL,
     Apellido VARCHAR(20) NOT NULL,
     Email VARCHAR(100) NOT NULL,
-    NombreImg VARCHAR(30) NOT NULL,
-    TipoImg VARCHAR(30) NOT NULL,
-    Img VARCHAR(255) NULL,
     Telefono INT(11) NULL,
     Direccion VARCHAR(100) NULL,
     Pais VARCHAR(30) NOT NULL,
@@ -27,11 +25,10 @@ CREATE TABLE IF NOT EXISTS `Empleado` (
 
 CREATE TABLE IF NOT EXISTS `Imagen` (
     Id INT(11) NOT NULL AUTO_INCREMENT,
-    Nombre VARCHAR(30) NOT NULL,
-    Tipo VARCHAR(30) NOT NULL,
+    Nombre VARCHAR(30) NULL,
+    Tipo VARCHAR(30) NULL,
     Img VARCHAR(255) NULL,
-    CONSTRAINT PkImg PRIMARY KEY (Id),
     EmpleadoId INT(11) NOT NULL,
+    CONSTRAINT PkImg PRIMARY KEY (Id),
     CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES User(Id),
 );
-
