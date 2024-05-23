@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="./js/inicioSesion.js" defer></script>
     <title>Iniciar Sesion</title>
 </head>
 <body>
@@ -12,22 +13,25 @@
         <div class="login-header">
             <header>Iniciar Sesion</header>
         </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Username" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
-        </div>
-        <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">Terminos y condiciones</label>
-            </section>
-        </div>
-        <div class="input-submit">
-            <button class="submit-btn" id="submit"></button>
-            <label for="submit">Sign In</label>
-        </div>
+        <form method="post">
+            <div class="input-box">
+                <input type="text" class="input-field" name="user" id="user"  autocomplete="off" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" name="pass" id="pass" autocomplete="off" placeholder="Password" required>
+            </div>
+            <div class="forgot">
+                <section>
+                    <input type="checkbox" id="check">
+                    <label for="check">Terminos y condiciones</label>
+                </section>
+            </div>
+            <p id="warning"></p>
+            <div class="input-submit">
+                <button type="button" class="submit-btn" onclick="LoginOk()"></button>
+                <label for="submit">Sign In</label>
+            </div>
+        </form>     
         <div class="sign-up-link">
             <p>¿No tienes cuenta? <a href="view/registro.html">Registro</a></p>
         </div>

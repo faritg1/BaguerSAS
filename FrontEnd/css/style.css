@@ -107,3 +107,10 @@ section a{
     color: #000;
     font-weight: 600;
 }
+
+/* Warning */
+
+#warning{
+    color: red;
+    text-align: center;
+}

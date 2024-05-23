@@ -1,5 +1,6 @@
 using System.Reflection;
 using Api.Extensions;
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 
@@ -33,6 +34,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseIpRateLimiting();
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
