@@ -1,7 +1,9 @@
 CREATE DATABASE IF NOT EXISTS `BaguerdbExample`;
 USE `BaguerdbExample`;
 
-/* Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. */
+/* Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. 
+Using ServerVersion '10.4.32-mariadb'.
+*/
 CREATE TABLE IF NOT EXISTS `User` (
     Id INT(11) NOT NULL AUTO_INCREMENT,
     Username VARCHAR(50) NOT NULL,
@@ -20,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `Empleado` (
     Ciudad VARCHAR(30) NULL,
     UserId INT(11) NOT NULL,
     CONSTRAINT PkEmpleado PRIMARY KEY (Id),
-    CONSTRAINT FkUser FOREIGN KEY (UserId) REFERENCES User(Id),
+    CONSTRAINT FkUser FOREIGN KEY (UserId) REFERENCES User(Id)
 );
 
 CREATE TABLE IF NOT EXISTS `Imagen` (
@@ -30,5 +32,5 @@ CREATE TABLE IF NOT EXISTS `Imagen` (
     Img VARCHAR(255) NULL,
     EmpleadoId INT(11) NOT NULL,
     CONSTRAINT PkImg PRIMARY KEY (Id),
-    CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES User(Id),
+    CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES User(Id)
 );
