@@ -1,3 +1,5 @@
+using System.Reflection;
+using Api.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 
@@ -9,6 +11,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.ConfigureCors();
+builder.Services.AddApplicationServices();
+builder.Services.ConfigureRateLimiting();
+builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 
 builder.Services.AddDbContext<BaguerContext>(options =>
 {
