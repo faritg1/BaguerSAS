@@ -20,6 +20,8 @@ namespace App.UnitOfWork
         private IImagen _imagenes;
 
         private IUser _users;
+        private IRol _roles;
+
 
         public IEmpleado Empleados 
         {
@@ -52,6 +54,18 @@ namespace App.UnitOfWork
                     _users = new UserRepository(_context);
                 }
                 return _users;
+            }
+        }
+
+        public IRol Roles 
+        {
+        get
+            {
+                if (_roles == null)
+                {
+                    _roles = new RolRepository(_context);
+                }
+                return _roles;
             }
         }
 

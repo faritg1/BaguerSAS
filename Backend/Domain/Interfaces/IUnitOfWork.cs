@@ -10,6 +10,7 @@ namespace Domain.Interfaces
         IEmpleado Empleados { get;}
         IImagen Imagenes { get;}
         IUser Users { get;}
+        IRol Roles { get; }
         Task<int> SaveAsync();
     }
 }
