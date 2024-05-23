@@ -30,7 +30,7 @@ namespace Api.Services
                 Nombre = imagen.Nombre,
                 Tipo = imagen.Tipo,
                 Img = imagen.Img,
-                EmpId = imagen.EmpleadoId
+                EmpleadoId = imagen.EmpleadoId
             }).ToList();
 
             return imagenDtos;
@@ -47,12 +47,19 @@ namespace Api.Services
                 Nombre = imagen.Nombre,
                 Tipo = imagen.Tipo,
                 Img = imagen.Img,
-                EmpId = imagen.EmpleadoId
+                EmpleadoId = imagen.EmpleadoId
             };
         }
 
         public async Task AddImagenAsync(ImagenDto imagenDto)
         {
+            // Verificar si el empleado existe
+            var empleado = await _unitOfWork.Empleados.GetByIdAsync(imagenDto.EmpleadoId);
+            if (empleado == null)
+            {
+                throw new KeyNotFoundException("Empleado no encontrado.");
+            }
+
             var imagen = _mapper.Map<Imagen>(imagenDto);
             _unitOfWork.Imagenes.Add(imagen);
             await _unitOfWork.SaveAsync();

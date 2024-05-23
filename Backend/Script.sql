@@ -42,3 +42,5 @@ Informacion IMPORTANTE: Al iniciar el proyecto de insertar los roles.
 INSERT INTO `BaguerdbExample`.`rol` (`rolName`) VALUES
 ('Administrador'),
 ('Empleado');
+INSERT INTO `BaguerdbExample`.`Imagen` (`Nombre`,`Tipo`,`Img`,`EmpleadoId`) VALUES
+('jpg', 'xxxxxxxxx', 'hhhhhhhh', 1);

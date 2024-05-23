@@ -11,6 +11,6 @@ namespace Api.Dtos
         public string Nombre { get; set; }
         public string Tipo { get; set; }
         public string Img { get; set; }
-        public int EmpId { get; set; }
+        public int EmpleadoId { get; set; }
     }
 }

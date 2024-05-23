@@ -49,12 +49,18 @@ namespace Api.Controllers
                 Nombre = file.FileName,
                 Tipo = file.ContentType,
                 Img = Convert.ToBase64String(fileBytes),
-                EmpId = empId
+                EmpleadoId = empId
             };
 
-            await _imagenService.AddImagenAsync(imagenDto);
-
-            return Ok("Image uploaded successfully.");
+            try
+            {
+                await _imagenService.AddImagenAsync(imagenDto);
+                return Ok("Image uploaded successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }
