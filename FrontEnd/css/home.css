@@ -48,8 +48,8 @@ li > a:hover {
     color: var(--primario);
 }
 
-
-.footer{
+/* Warning */
+#warning{
+    color: red;
     text-align: center;
-    padding: 10px;
 }

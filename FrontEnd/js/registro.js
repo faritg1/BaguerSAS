@@ -1,5 +1,4 @@
 const Register = async() => {
-    console.log("HOLA");
     const user = document.getElementById('user').value;
     const pass = document.getElementById('pass').value;
     console.log(user);
