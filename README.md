@@ -34,14 +34,13 @@ git clone https://github.com/faritg1/BaguerSAS.git
 - dotnet ef migrations add InitialCreate -p Persistence -s Api -o Data/Migrations
 
 ## Realizar la actualizacio la base de datos:
-- dotnet ef migrations add InitialCreate -p Persistence -s Api -o Data/Migrations
-
+- dotnet ef database update --project ./Persistence/ --startup-project ./Api/
 
 ## Insertar Roles: 
 - INSERT INTO `BaguerdbExample`.`rol` (`rolName`) VALUES
 - ('Administrador'),
 - ('Empleado');
 
-## Ejecutar el servidor
+## Ejecutar del servidor
 - dotnet watch --project Api/
 
