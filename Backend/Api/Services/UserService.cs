@@ -206,6 +206,31 @@ public class UserService : IUserService
         }
     }
 
+    public async Task<string> UpdateUserAsync(UpdateUserDto model)
+    {
+        var user = await _unitOfWork.Users.GetByUsernameAsync(model.Username);
+        if (user == null)
+        {
+            throw new InvalidOperationException ($"User {model.Username} does not exist.");
+        }
+
+        var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(user, user.Password, model.OldPassword);
+        if (passwordVerificationResult != PasswordVerificationResult.Success)
+        {
+            throw new InvalidOperationException ($"Old password is incorrect.");
+        }
+
+        Console.WriteLine($"Updating user: {model.Username} to new username: {model.NewUsername}");
+
+        user.Username = model.NewUsername;
+        user.Password = _passwordHasher.HashPassword(user, model.NewPassword);
+
+        _unitOfWork.Users.Update(user);
+        await _unitOfWork.SaveAsync();
+
+        throw new InvalidOperationException ($"User {model.NewUsername} has been updated successfully.");
+    }
+
     private RefreshToken CreateRefreshToken()
     {
         var randomNumber = new byte[32];

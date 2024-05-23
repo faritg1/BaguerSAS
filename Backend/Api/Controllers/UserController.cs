@@ -79,6 +79,19 @@ public class UserController : BaseController
         return Ok(result);
     }
 
+    [HttpPost("updateUser")]
+    public async Task<IActionResult> UpdateUserAsync(UpdateUserDto model)
+    {
+        try
+        {
+            var result = await _userService.UpdateUserAsync(model);
+        return Ok(result);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
     [HttpPost("refresh-token")]
     public async Task<IActionResult> RefreshToken()
     {
@@ -88,8 +101,6 @@ public class UserController : BaseController
             SetRefreshTokenInCookie(response.RefreshToken);
         return Ok(response);
     }
-
-
     private void SetRefreshTokenInCookie(string refreshToken)
     {
         var cookieOptions = new CookieOptions
