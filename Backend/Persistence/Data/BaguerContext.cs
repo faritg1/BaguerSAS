@@ -14,6 +14,8 @@ public partial class BaguerContext : DbContext
     public virtual DbSet<Empleado> Empleados { get; set; }
     public virtual DbSet<Imagen> Imagens { get; set; }
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Rol> Rols { get; set; }
+    public virtual DbSet<UserRol> UsersRols { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

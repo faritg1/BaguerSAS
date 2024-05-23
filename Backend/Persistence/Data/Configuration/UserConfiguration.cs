@@ -23,6 +23,32 @@ namespace Persistence.Data.Configuration
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(50);
+                
+            entity
+            .HasMany(p => p.Rols)
+            .WithMany(r => r.Users)
+            .UsingEntity<UserRol>(
+
+                j => j
+                .HasOne(pt => pt.Rol)
+                .WithMany(t => t.UsersRols)
+                .HasForeignKey(ut => ut.RolId),
+
+                j => j
+                .HasOne(et => et.Usuario)
+                .WithMany(et => et.UsersRols)
+                .HasForeignKey(el => el.UsuarioId),
+
+                j =>
+                {
+                    j.ToTable("userRol");
+                    j.HasKey(t => new { t.UsuarioId, t.RolId });
+
+                });
+
+            entity.HasMany(p => p.RefreshTokens)
+            .WithOne(p => p.User)
+            .HasForeignKey(p => p.UserId);
         }
     }
 }
