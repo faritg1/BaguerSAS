@@ -27,6 +27,23 @@ public class UserService : IUserService
         _passwordHasher = passwordHasher;
     }
 
+    public async Task<List<UserDetailDto>> GetAllUsersAsync()
+    {
+        var users = await _unitOfWork.Users.GetAllAsync();
+        var userDetailDtos = users.Select(user => new UserDetailDto
+        {
+            Id = user.Id,
+            Username = user.Username,
+            Roles = user.Rols.Select(r => new RolDto
+            {
+                Id = r.Id,
+                Nombre = r.Nombre
+            }).ToList()
+        }).ToList();
+
+        return userDetailDtos;
+    }
+
     public async Task<string> AddRoleAsync(AddRoleDto model)
     {
         var user = await _unitOfWork.Users

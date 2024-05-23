@@ -23,6 +23,20 @@ public class UserController : BaseController
         _mapper = mapper;
     }
 
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<UserDetailDto>>> Get()
+    {
+        var userDetails = await _userService.GetAllUsersAsync();
+        if (userDetails == null || !userDetails.Any())
+        {
+            return BadRequest(new { message = "No users found." });
+        }
+
+        return Ok(userDetails);
+    }
+
     [HttpPost("registro")]
     public async Task<ActionResult> RegisterAsync(RegisterDto model)
     {

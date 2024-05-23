@@ -33,7 +33,7 @@ namespace Persistence.Data.Configuration
             entity.Property(e => e.Pais)
                 .IsRequired()
                 .HasMaxLength(30);
-            entity.Property(e => e.Telefono).HasColumnType("int(11)");
+            entity.Property(e => e.Telefono).HasColumnType("int(20)");
             entity.Property(e => e.UserId).HasColumnType("int(11)");
 
             entity.HasOne(d => d.User).WithMany(p => p.Empleados)

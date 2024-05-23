@@ -33,5 +33,12 @@ namespace App.Repositories
                 .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
         }
 
+        public override async Task<IEnumerable<User>> GetAllAsync()
+        {
+            return await _context.Users
+            .Include(u => u.Rols)
+            .ToListAsync();
+        }
+
     }
 }
