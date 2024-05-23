@@ -17,6 +17,7 @@ builder.Services.ConfigureCors();
 builder.Services.AddApplicationServices();
 builder.Services.ConfigureRateLimiting();
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
+builder.Services.AddJwt(builder.Configuration);
 
 builder.Services.AddDbContext<BaguerContext>(options =>
 {
