@@ -1,7 +1,8 @@
 CREATE DATABASE IF NOT EXISTS `BaguerdbExample`;
 USE `BaguerdbExample`;
 
-/* Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. 
+/* 
+Esta es la bd que voy ha utilizar, se que no son buenas practicas no tener la base de datos normalizada. 
 Using ServerVersion '10.4.32-mariadb'.
 */
 CREATE TABLE IF NOT EXISTS `User` (
@@ -34,3 +35,10 @@ CREATE TABLE IF NOT EXISTS `Imagen` (
     CONSTRAINT PkImg PRIMARY KEY (Id),
     CONSTRAINT FkEmple FOREIGN KEY (EmpleadoId) REFERENCES User(Id)
 );
+
+/* 
+Informacion IMPORTANTE: Al iniciar el proyecto de insertar los roles.
+ */
+INSERT INTO `BaguerdbExample`.`rol` (`rolName`) VALUES
+('Administrador'),
+('Empleado');

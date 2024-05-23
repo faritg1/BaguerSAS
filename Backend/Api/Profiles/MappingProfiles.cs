@@ -11,7 +11,7 @@ namespace Api.Profiles
     public class MappingProfiles : Profile
     {
         public MappingProfiles(){
-            CreateMap<Empleado, Empleado>().ReverseMap();
+            CreateMap<Empleado, EmpleadoDto>().ReverseMap();
         }
     }
 }
