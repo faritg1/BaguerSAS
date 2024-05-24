@@ -128,15 +128,19 @@ const Put = async() => {
                     <input class="form-control" type="password" name="passnew" id="passnew" required>                    
                     <input type="hidden" name="method" value="post">
                     <p id="warning"></p>
-                    <button type="button" class="btn btn-success mt-2" >
+                    <button type="button" class="btn btn-success mt-2">
                         <a href="/Frontend/view/home.html">Volver</a>
+                    </button>
+                    <button type="button" class="btn btn-success mt-2" onclick="updateUser()">
+                        Guardar
                     </button>
                 </form>
             </div>
         </div>
-        `)  
+        `)
+}
 
-
+const updateUser = async() => {
     const usern = document.getElementById('userold').value;
     const usero = document.getElementById('usernew').value;
     const passo = document.getElementById('passold').value;

@@ -28,7 +28,7 @@ const Register = async() => {
                 warningDiv.style.display = 'block';
                 return;
             }
-            return window.location.href = "/Frontend/view/home.html";
+            return window.location.href = "../index.html";
         } catch (error) {
             return "Hay un error" + error;
         }

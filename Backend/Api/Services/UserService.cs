@@ -228,7 +228,7 @@ public class UserService : IUserService
         _unitOfWork.Users.Update(user);
         await _unitOfWork.SaveAsync();
 
-        throw new InvalidOperationException ($"User {model.NewUsername} has been updated successfully.");
+        return $"User {model.NewUsername} has been updated successfully.";
     }
 
     private RefreshToken CreateRefreshToken()
