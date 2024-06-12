@@ -1,6 +1,7 @@
 const listImg = async () => {
     document.querySelector("#container").innerHTML = null;
     document.querySelector("#emp").innerHTML = null;
+    document.querySelector("#listImg").innerHTML = null;
     let emp = document.querySelector("#listImg");
         emp.insertAdjacentHTML("beforeend", /* html */`
         <div class="row justify-content-center">

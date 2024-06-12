@@ -42,7 +42,7 @@ const empImg = async() => {
             const options = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(newUser)
             };
@@ -56,7 +56,7 @@ const empImg = async() => {
                 warningDiv.style.display = 'block';
                 return;
             }
-            //return window.location.href = "/Frontend/view/home.html";
+            return window.location.href = "/Frontend/view/home.html";
         } catch (error) {
             return "Hay un error" + error;
         }

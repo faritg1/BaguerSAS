@@ -2,6 +2,7 @@ const lisEmp = async() => {
     document.querySelector("#container").innerHTML = null;
     document.querySelector("#emp").innerHTML = null;
     document.querySelector("#listImg").innerHTML = null;
+    document.querySelector("#listEmp").innerHTML = null;
     let emp = document.querySelector("#listEmp");
         emp.insertAdjacentHTML("beforeend", /* html */`
         <div class="row justify-content-center">
