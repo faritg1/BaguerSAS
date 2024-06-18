@@ -1,3 +1,4 @@
+let tokeAuth = localStorage.getItem('token');
 const lisEmp = async() => {
     document.querySelector("#container").innerHTML = null;
     document.querySelector("#emp").innerHTML = null;
@@ -40,7 +41,8 @@ const GetListEmp = async() => {
         const options = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokeAuth}` 
             }
         };
         const peticion = await fetch(url, options);
@@ -108,7 +110,8 @@ const DetallLisEmp = async(id) => {
         const options = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${tokeAuth}` 
             }
         };
         const peticion = await fetch(url, options);

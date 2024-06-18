@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
             return result;
         } catch (error) {
-            mostrarMensaje('Error durante el inicio de sesión:', 'error',error);
+            mostrarMensaje('Error durante el inicio de sesión:', 'error');
             throw new Error(error); 
         }
     }
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isTokenExpired) {
             mostrarMensaje('Resgistro exitoso', 'correcto');
             setTimeout(() => {
-                window.location.href = "./view/home.html";
+                window.location.href = "./src/page/home.html";
             }, 1000); 
         } else {
             mostrarMensaje ('El token ha expirado', 'error') ;
