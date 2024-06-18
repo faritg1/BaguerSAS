@@ -1,5 +1,5 @@
 //JavaScript
-import { token } from "./../auth/jwt.js";
+import { tokenJWT } from "./../auth/jwt.js";
 import { HTTP_CONTENT_JSON, HTTP_METHOD_GET, HTTP_METHOD_POST, HTTP_METHOD_PUT, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK } from "../../const.js";
 
 const getHttpResponseCodes = () =>
@@ -18,7 +18,7 @@ const request = async (API_URL, method = HTTP_METHOD_GET, body = {}) => {
     options.headers = {
         Accept: HTTP_CONTENT_JSON,
         "Content-Type": HTTP_CONTENT_JSON,
-        Authorization: `Bearer ${token.getToken(token)}`
+        Authorization: `Bearer ${tokenJWT.getToken('token')}`
     };
 
     if ([HTTP_METHOD_POST, HTTP_METHOD_PUT].includes(method)) {
@@ -27,7 +27,7 @@ const request = async (API_URL, method = HTTP_METHOD_GET, body = {}) => {
 
     try {
         const response = await fetch(API_URL, options);
-        return !response.ok ? { message: getHttpResponseCodes()[response.status], statusCode: response.status, success: false } : await response.json();
+        console.log(!response.ok ? { message: getHttpResponseCodes()[response.status], statusCode: response.status, success: false } : await response.json());
     } catch (ex) {
         console.log(document.title, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK);
     }

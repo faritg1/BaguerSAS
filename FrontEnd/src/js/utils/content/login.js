@@ -1,3 +1,5 @@
+import {tokenJWT} from '../auth/jwt.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const mensajeEstado = document.getElementById('mensajeEstado');
     document.querySelector('.loginFetch').addEventListener('submit', (event) => {
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const token = result.token;
-        localStorage.setItem('token', token);
+        tokenJWT.setToken({ Key: 'token', Value: `${token}` })
 
         const arrayT = token.split('.');
         if (arrayT.length !== 3) {
@@ -60,15 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const isTokenExpired = currentTimestamp >= tokenPay.exp;
         
         if (!isTokenExpired) {
-            mostrarMensaje('Resgistro exitoso', 'correcto');
+            mostrarMensaje('Registro exitoso', 'correcto');
             setTimeout(() => {
-                window.location.href = "./src/page/home.html";
+                window.location.href = "src/page/home.html";
+                console.log('funciona');
             }, 1000); 
         } else {
             mostrarMensaje ('El token ha expirado', 'error') ;
         }
         } catch (error) {
             mostrarMensaje (error, 'error');
+            throw new Error(error); 
         }
     }
 
