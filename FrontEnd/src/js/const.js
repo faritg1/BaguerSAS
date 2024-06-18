@@ -1,5 +1,37 @@
 //Config
 const API_URL_DEV = "http://localhost:5279/";
 
-//JWT
-//const TOKEN_STORAGE_NAME = localStorage.setItem('token', token);
+//HTTP Commons
+const HTTP_CONTENT_JSON = "application/json";
+
+//HTTP Methods
+const HTTP_METHOD_GET = "GET";
+const HTTP_METHOD_POST = "POST";
+const HTTP_METHOD_PUT = "PUT";
+const HTTP_METHOD_DELETE = "DELETE";
+
+//HTTP Message
+const MESSAGE_ERROR = "ERROR";
+const MESSAGE_ERROR_ALERT = "Ocurrió un error inesperado...";
+const MESSAGE_INFO = "INFO";
+const MESSAGE_NOTFOUND = "NOTFOUND";
+const MESSAGE_OK = "Ok";
+const MESSAGE_SUCCESS = "SUCCESS";
+const MESSAGE_WARNING = "WARNING";
+
+export {
+    API_URL_DEV,
+    HTTP_CONTENT_JSON,
+    HTTP_METHOD_GET,
+    HTTP_METHOD_POST,
+    HTTP_METHOD_PUT,
+    HTTP_METHOD_DELETE,
+    MESSAGE_ERROR,
+    MESSAGE_ERROR_ALERT,
+    MESSAGE_INFO,
+    MESSAGE_NOTFOUND,
+    MESSAGE_OK,
+    MESSAGE_SUCCESS,
+    MESSAGE_WARNING,
+};
+

@@ -1,6 +1,6 @@
 const token = {
     getToken : (res) => {
-        return localStorage.getItem(`${res}`);
+        return localStorage.getItem(`'${res}'`);
     },
     removeToken : () => {
         return localStorage.clear();
