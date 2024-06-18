@@ -9,7 +9,7 @@ const Get = async() => {
         };
         const peticion = await fetch(url, options);
         const json = await peticion.json();
-        console.log(json);
+        console.log(peticion);
         let selectId = document.querySelector("#tableBody");
         selectId.insertAdjacentHTML("beforeend", /* html */`
         ${json.map((value)=> {
