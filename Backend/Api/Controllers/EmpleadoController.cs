@@ -6,9 +6,11 @@ using Api.Dtos;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
+[Authorize(Roles = "Empleado,Administrator")]
 public class EmpleadoController : BaseController
 {
     private readonly IUnitOfWork _unitOfWork;

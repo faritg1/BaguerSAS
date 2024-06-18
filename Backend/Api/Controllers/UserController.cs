@@ -54,17 +54,19 @@ public class UserController : BaseController
     [HttpPost("login")]
     public async Task<IActionResult> GetTokenAsync(LoginDto model)
     {
-        if (!ModelState.IsValid)
+        try
         {
-            return BadRequest(ModelState);
+            var result = await _userService.GetTokenAsync(model);
+            if (!string.IsNullOrEmpty(result.RefreshToken))
+            {
+                SetRefreshTokenInCookie(result.RefreshToken);
+            }
+            return Ok(result);
         }
-
-        var result = await _userService.GetTokenAsync(model);
-        if (!string.IsNullOrEmpty(result.RefreshToken))
+        catch (InvalidOperationException ex)
         {
-            SetRefreshTokenInCookie(result.RefreshToken);
+            return BadRequest(new { message = ex.Message });
         }
-        return Ok(result);
     }
 
     [HttpPost("addrole")]

@@ -90,7 +90,7 @@ public class UserService : IUserService
         {
             dataUserDto.IsAuthenticated = false;
             dataUserDto.Message = $"User does not exist with username {model.Username}.";
-            return dataUserDto;
+            throw new InvalidOperationException(dataUserDto.Message);
         }
 
         var result = _passwordHasher.VerifyHashedPassword(user, user.Password, model.Password);

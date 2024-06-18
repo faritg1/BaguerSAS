@@ -2,7 +2,9 @@ using System.Reflection;
 using Api.Extensions;
 using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using Persistence.Data;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,18 @@ builder.Services.AddDbContext<BaguerContext>(options =>
 {
     string  connectionString = builder.Configuration.GetConnectionString("MySqlConex");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
 var app = builder.Build();
