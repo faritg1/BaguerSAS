@@ -39,6 +39,11 @@ body{
     padding: 20px;
 }
 
+a{
+    text-decoration: none;
+    color: var(--blanco);
+}
+
 li > a {
     text-decoration: none;
     color: var(--blanco);
