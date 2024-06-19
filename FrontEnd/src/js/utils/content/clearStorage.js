@@ -2,8 +2,7 @@ import {tokenJWT} from '../auth/jwt.js';
 import {endpoint} from '../api/endpoints.js';
 import {request} from '../api/request.js';
 
-
-//tokenJWT.removeToken();
+tokenJWT.removeToken();
 
 const verify = tokenJWT.getToken('token') === null ? "token no encontrado" : "Token encontrado";
 
@@ -16,3 +15,4 @@ console.log(endpoint.loginUser);
 tokenJWT.saludar({ nombre: 'Carlos', apellido: 'Torres' });
 
 request(endpoint.getEmpleado);
+request(endpoint.getUser);

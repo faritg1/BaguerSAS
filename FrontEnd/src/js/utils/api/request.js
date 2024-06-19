@@ -20,16 +20,20 @@ const request = async (API_URL, method = HTTP_METHOD_GET, body = {}) => {
         "Content-Type": HTTP_CONTENT_JSON,
         Authorization: `Bearer ${tokenJWT.getToken('token')}`
     };
-
+    
     if ([HTTP_METHOD_POST, HTTP_METHOD_PUT].includes(method)) {
         options.body = JSON.stringify(body);
     }
 
     try {
         const response = await fetch(API_URL, options);
-        console.log(!response.ok ? { message: getHttpResponseCodes()[response.status], statusCode: response.status, success: false } : await response.json());
+        return(
+            !response.ok 
+            ? { message: getHttpResponseCodes()[response.status], statusCode: response.status, success: false } 
+            : await response.json()
+        );
     } catch (ex) {
-        console.log(document.title, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK);
+        console.log(document.title, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK, ex);
     }
 };
 
