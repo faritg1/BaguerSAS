@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/registro.js" defer></script>
+    <link rel="stylesheet" href="../../css/style.css">
+    <script type="module" src="../js/utils/content/registro.js"></script>
     <title>Registro</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="login-header">
             <header>Registro</header>
         </div>
-        <form method="post">
+        <form class="registro" method="post">
             <div class="input-box">
                 <input type="text" class="input-field" name="user" id="user" autocomplete="off" placeholder="Username" required>
             </div>
@@ -21,13 +21,13 @@
             </div>
             <p id="warning"></p>
             <div class="input-submit">
-                <button type="button" class="submit-btn" onclick="Register()"></button>
+                <button type="submit" class="submit-btn"></button>
                 <label for="submit">Registro</label>
             </div>
         </form>
         <div class="mensaje" id="mensajeEstado"></div>
         <div class="sign-up-link">
-            <p>¿Ya tienes cuenta? <a href="../index.html">Iniciar Sesion</a></p>
+            <p>¿Ya tienes cuenta? <a href="../../index.html">Iniciar Sesion</a></p>
         </div>
     </div>
 </body>
