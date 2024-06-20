@@ -7,9 +7,6 @@ const tokenJWT = {
     },
     setToken : (res = {}) => {
         return localStorage.setItem(`${res.Key}`,res.Value);
-    },
-    saludar : (res = {}) => {
-        return console.log(`Hola '${res.nombre}', ${res.apellido}`);
     }
 }
 

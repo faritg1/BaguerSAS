@@ -9,6 +9,7 @@ namespace Domain.Interfaces
     public interface IUser : IGenericRepository<User>
     {
         Task<User> GetByUsernameAsync(string username);
+        Task<User> GetUser(string username);
         Task<User> GetByRefreshTokenAsync(string username);
     }
 }

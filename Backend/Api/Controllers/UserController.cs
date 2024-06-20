@@ -23,6 +23,28 @@ public class UserController : BaseController
         _mapper = mapper;
     }
 
+    [HttpGet("{username}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<UserDetailDto>> GetUser(string username)
+    {
+        try
+        {
+            var userDetails = await _userService.GetUsersAsync(username);
+            if (userDetails == null)
+            {
+                return NotFound(new { message = "User not found" });
+            }
+
+            return Ok(userDetails);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

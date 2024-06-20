@@ -43,6 +43,21 @@ public class UserService : IUserService
 
         return userDetailDtos;
     }
+    public async Task<UserDetailDto> GetUsersAsync(string username)
+    {
+        var users = await _unitOfWork.Users.GetUser(username);
+
+        var userDetailDtos = new UserDetailDto {
+            Id = users.Id,
+            Username = users.Username,
+            Roles = users.Rols.Select(r => new RolDto
+            {
+                Id = r.Id,
+                Nombre = r.Nombre
+            }).ToList()
+        };
+        return userDetailDtos;
+    }
 
     public async Task<string> AddRoleAsync(AddRoleDto model)
     {

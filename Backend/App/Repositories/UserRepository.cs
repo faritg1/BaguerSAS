@@ -32,6 +32,12 @@ namespace App.Repositories
                 .Include(u => u.RefreshTokens)
                 .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
         }
+        public async Task<User> GetUser(string username)
+        {
+            return await _context.Users
+                .Include(u => u.Rols)
+                .FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+        }
 
         public override async Task<IEnumerable<User>> GetAllAsync()
         {
