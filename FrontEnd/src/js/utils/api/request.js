@@ -1,5 +1,4 @@
-//JavaScript
-import { tokenJWT } from "./../auth/jwt.js";
+import { storage } from "./../auth/jwt.js";
 import { HTTP_CONTENT_JSON, HTTP_METHOD_GET, HTTP_METHOD_POST, HTTP_METHOD_PUT, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK } from "../../const.js";
 
 const getHttpResponseCodes = () =>
@@ -18,7 +17,7 @@ const request = async (API_URL, method = HTTP_METHOD_GET, body = {}) => {
     options.headers = {
         Accept: HTTP_CONTENT_JSON,
         "Content-Type": HTTP_CONTENT_JSON,
-        Authorization: `Bearer ${tokenJWT.getToken('token')}`
+        Authorization: `Bearer ${storage.get('token')}`
     };
     
     if ([HTTP_METHOD_POST, HTTP_METHOD_PUT].includes(method)) {

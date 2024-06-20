@@ -1,12 +1,10 @@
-const mostrarMensaje = (texto, tipo) => {
-    mensajeEstado.textContent = texto;
-    mensajeEstado.classList.add(tipo);
-    mensajeEstado.style.display = 'block';
-
-    setTimeout(() => {
-        mensajeEstado.style.display = 'none';
-        mensajeEstado.classList.remove(tipo);
-    }, 1000); 
+const mostrarMensaje = (icon,texto) => {
+    Swal.fire({
+        icon: `${icon}`,
+        title: `${texto}`,
+        showConfirmButton: false,
+        timer: 1500
+    });
 }
 
 export {mostrarMensaje}

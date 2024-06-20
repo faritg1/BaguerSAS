@@ -1,4 +1,4 @@
-import {tokenJWT} from '../auth/jwt.js';
+import {storage} from '../auth/jwt.js';
 import {endpoint} from '../api/endpoints.js';
 import {request} from '../api/request.js';
 import {HTTP_METHOD_POST} from "../../const.js";
@@ -13,21 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
         try{
             if(!((usernameValue === "") || (passwordValue === ""))) {
                 const loginUser = { username: usernameValue, password: passwordValue };
-                const response = await request(endpoint.loginUser, HTTP_METHOD_POST, loginUser);    
+                const response = await request(endpoint.loginUser, HTTP_METHOD_POST, loginUser);  
                 if(response.isAuthenticated === true) {
-                    tokenJWT.setToken({ Key: 'token', Value: `${response.token}` });
-                    mostrarMensaje('inicio de sesion exitoso', 'correcto');
+                    storage.set({ Key: 'token', Value: `${response.token}` });
+                    storage.set({ Key: 'username', Value: `${response.userName}` });
+                    storage.set({ Key: 'rol', Value: `${response.roles[0]}` });
+                    mostrarMensaje("success","Iniciando...");
                     setTimeout(() => {
                         window.location.href = "src/page/home.html";
-                    }, 1000); 
+                    }, 2000); 
                 }else if(response.statusCode == 500){
-                    mostrarMensaje('Problemas con el server', 'error');
+                    mostrarMensaje("warning","Problemas con el servidor...");
                 }else{
-                    mostrarMensaje('Usuario o contraseña incorrecta', 'error');
+                    mostrarMensaje("error","Usuario o contraseña incorrecta");
                 }
             }
         }catch(e){
-            mostrarMensaje('Problemas con el server', 'error')
+            mostrarMensaje("warning","Problemas con el servidor...");
             throw new Error(e); 
         }
     });

@@ -1,13 +1,13 @@
-const tokenJWT = {
-    getToken : (res) => {
+const storage = {
+    get : (res) => {
         return localStorage.getItem(`${res}`);
     },
-    removeToken : () => {
+    clearAll : () => {
         return localStorage.clear();
     },
-    setToken : (res = {}) => {
+    set : (res = {}) => {
         return localStorage.setItem(`${res.Key}`,res.Value);
     }
 }
 
-export { tokenJWT };
+export { storage };
