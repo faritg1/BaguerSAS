@@ -13,6 +13,7 @@ namespace Api.Profiles
         public MappingProfiles(){
             CreateMap<Empleado, EmpleadoDto>().ReverseMap();
             CreateMap<Imagen, ImagenDto>().ReverseMap();
+            CreateMap<Rol, RolDto>().ReverseMap();
         }
     }
 }
