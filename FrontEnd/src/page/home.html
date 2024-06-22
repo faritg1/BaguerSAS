@@ -11,6 +11,8 @@
     <script src="../../js/listarEmp.js" defer></script>
     <script src="../../js/img.js" defer></script>
     <script src="../../js/listImg.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../js/utils/content/clearStorage.js"></script>
 </head>
 <body>
     <header class="headerPrin">
@@ -38,7 +40,14 @@
             
         </div>
         <div id="container" class="container">
-            <div class="row justify-content-center">
+            <button type="button" class="nuevoUser btn btn-success">
+                Agregar Nuevo
+            </button>
+            <button type="button" class="btn btn-success">
+                Cambiar Rol
+            </button>
+            <div class="row justify-content-center mt-1">
+                
                 <div class="col-md-9"> 
                     <table class="table table-dark">
                         <thead>

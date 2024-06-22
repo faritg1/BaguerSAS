@@ -1,6 +1,7 @@
 import {storage} from '../auth/jwt.js';
 import {endpoint} from '../api/endpoints.js';
 import {request} from '../api/request.js';
+import {probando} from './nuevoUsuario.js';
 
 storage.clearAll();
 
@@ -14,3 +15,5 @@ console.log(endpoint.loginUser);
 
 request(endpoint.getEmpleado);
 request(endpoint.getUser);
+
+probando();

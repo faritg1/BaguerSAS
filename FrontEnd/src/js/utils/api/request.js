@@ -8,6 +8,7 @@ const getHttpResponseCodes = () =>
         401: "Unauthorized",
         404: "Not Found",
         422: "Unprocessable Content",
+        429: "Too Many Requests",
         500: "Internal Server Error"
     });
 
@@ -32,7 +33,7 @@ const request = async (API_URL, method = HTTP_METHOD_GET, body = {}) => {
             : await response.json()
         );
     } catch (ex) {
-        console.log(document.title, MESSAGE_ERROR_ALERT, MESSAGE_ERROR, MESSAGE_OK, ex);
+        console.log(document.title, ex);
     }
 };
 

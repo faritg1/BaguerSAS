@@ -4,7 +4,6 @@ import {HTTP_METHOD_POST} from "../../const.js";
 import {mostrarMensaje} from './mostrarMensaje.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const mensajeEstado = document.getElementById('mensajeEstado');
     document.querySelector('.registro').addEventListener('submit', async (event) => {
         event.preventDefault();
         const usernameValue = document.getElementById('user').value;
