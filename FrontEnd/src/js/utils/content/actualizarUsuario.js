@@ -2,14 +2,15 @@ import {endpoint} from '../api/endpoints.js';
 import {request} from '../api/request.js';
 import {HTTP_METHOD_POST} from "../../const.js";
 
-const probando = () => {
-    document.querySelector('.nuevoUser').addEventListener('click', async (event) => {
-    event.preventDefault();
+const actulizarUser = () => {
     Swal.fire({
-        title: "Agregar nuevo usuario",
+        title: "Actualizar Usuario",
         html: 
-        `<input type="text" id="user" class="swal2-input" placeholder="Username" autofocus>
-        <input type="password" id="pass" class="swal2-input" placeholder="Contraseña">`,
+        `<input type="text" id="user" class="swal2-input" placeholder="Username">
+        <input type="text" id="newUser" class="swal2-input" placeholder="New Username">
+        <input type="password" id="pass" class="swal2-input" placeholder="Contraseña">
+        <input type="password" id="newPass" class="swal2-input" placeholder="New Contraseña">
+        `,
         preConfirm: async () => {
             const usernameValue = document.getElementById('user').value;
             const passwordValue = document.getElementById('pass').value;
@@ -35,7 +36,7 @@ const probando = () => {
             const { username } = result.value;
             await Swal.fire({
                 icon: `success`,
-                title: `Usuario agregado`,
+                title: `Actualizado`,
                 html: `<p>Nombre: ${username}</p>`,
                 showConfirmButton: false,
                 timer: 1500,
@@ -43,9 +44,9 @@ const probando = () => {
             location.reload();
         }
     });
-});
-}
+};
 
-export {probando};
+
+export {actulizarUser};
 
 

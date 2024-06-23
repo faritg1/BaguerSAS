@@ -134,8 +134,8 @@ const DetallLisEmp = async(id) => {
                     <td>${value.ciudad}</td>
                 </tr>
             `)
-            }).join("")}`)
+            }).join
+            }`)
     } catch (error) {
-        console.error('Error obteniendo información:', error);
     }
 }
