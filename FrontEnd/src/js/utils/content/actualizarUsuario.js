@@ -12,18 +12,20 @@ const actulizarUser = () => {
         <input type="password" id="newPass" class="swal2-input" placeholder="New Contraseña">
         `,
         preConfirm: async () => {
-            const usernameValue = document.getElementById('user').value;
-            const passwordValue = document.getElementById('pass').value;
+            const usernameOld = document.getElementById('user').value;
+            const passwordOld = document.getElementById('pass').value;
+            const usernameNew = document.getElementById('newUser').value;
+            const passwordNew = document.getElementById('newPass').value;
 
-            const loginUser = { username: usernameValue, password: passwordValue };
+            const updateUser = { username: usernameOld, newUsername: usernameNew, oldPassword: passwordOld, newPassword: passwordNew}
             try {
-                const response = await request(endpoint.registroUser, HTTP_METHOD_POST, loginUser);   
+                const response = await request(endpoint.actualizarUser, HTTP_METHOD_POST, updateUser);   
                 if (response.statusCode === 400 ) {
-                    Swal.showValidationMessage(`Error al registrar`);
+                    Swal.showValidationMessage(`Error al actualizar`);
                 } else if (response.statusCode === 500) {
                     throw new Error();
                 } else {
-                    return loginUser;
+                    return updateUser;
                 }
             } catch (error) {
                 Swal.showValidationMessage(`Problemas con el servidor`);
@@ -33,11 +35,11 @@ const actulizarUser = () => {
         allowOutsideClick: () => !Swal.isLoading()
     }).then(async (result) =>  {
         if (result.isConfirmed && result.value) {
-            const { username } = result.value;
+            const { newUsername } = result.value;
             await Swal.fire({
                 icon: `success`,
                 title: `Actualizado`,
-                html: `<p>Nombre: ${username}</p>`,
+                html: `<p>Usuario: ${newUsername}</p>`,
                 showConfirmButton: false,
                 timer: 1500,
             });
